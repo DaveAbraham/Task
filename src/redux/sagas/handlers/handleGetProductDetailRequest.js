@@ -8,7 +8,7 @@ import {requestGetProductDetail} from '../requests/requestGetProductDetail';
 export function* handleGetProductDetailRequest(action) {
   try {
     const response = yield call(requestGetProductDetail, action.payload);
-    console.log('response from get product detail request>>>', response.data);
+    // console.log('response from get product detail request>>>', response.data);
     if (response.status) {
       yield put(getProductDetailSuccess(response.data));
     } else {

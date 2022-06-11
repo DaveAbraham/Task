@@ -30,9 +30,7 @@ const ProductDetails = () => {
   };
   const handlePlusButton = id => {
     let foundIndex = -1;
-    console.log(id, cartItems);
     foundIndex = cartItems?.findIndex(x => x.productDetails?.id === id);
-    console.log(foundIndex);
     if (foundIndex != -1) {
       dispatch(increaseItemsCountNumber(foundIndex));
     } else {
@@ -43,15 +41,11 @@ const ProductDetails = () => {
   const handleMinusButton = id => {
     let foundIndex = -1;
     let count = countInCart(id);
-    console.log('indexBefore >> ', foundIndex);
     foundIndex = cartItems.findIndex(x => x.productDetails.id === id);
-    console.log('indexAfter>>', foundIndex);
 
     if (count == 1 && foundIndex != -1) {
-      console.log('case 1');
       dispatch(removeFromCart(foundIndex));
     } else if (count != 1 && foundIndex != -1) {
-      console.log('case 2');
       dispatch(decreaseItemsCountNumber(foundIndex));
     }
   };

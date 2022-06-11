@@ -32,12 +32,6 @@ const Cart = ({navigation}) => {
         cartItems[i]?.productDetails.price * cartItems[i]?.itemsInCart;
     return totalPrice;
   };
-  console.log(
-    'cart items now>>',
-    cartItems,
-    'updated cart items >>>>',
-    updatedCartItems,
-  );
 
   useEffect(() => {
     setTotal(totalAmount);
@@ -52,26 +46,19 @@ const Cart = ({navigation}) => {
   };
   const handleMinusButton = (id, count) => {
     let foundIndex = -1;
-    console.log('indexBefore >> ', foundIndex);
     foundIndex = cartItems.findIndex(x => x.productDetails.id === id);
-    console.log('indexAfter>>', foundIndex);
 
     if (count == 1 && foundIndex != -1) {
-      console.log('case 1');
       dispatch(removeFromCart(foundIndex));
     } else if (count != 1 && foundIndex != -1) {
-      console.log('case 2');
       dispatch(decreaseItemsCountNumber(foundIndex));
     }
   };
   const handleDelete = id => {
     let foundIndex = -1;
-    console.log('indexBefore >> ', foundIndex);
     foundIndex = cartItems.findIndex(x => x.productDetails.id === id);
-    console.log('indexAfter>>', foundIndex);
 
     if (foundIndex != -1) {
-      console.log('case 1');
       dispatch(removeFromCart(foundIndex));
     }
   };
@@ -219,8 +206,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     paddingLeft: 3,
   },
-  // lightFonts: {fontFamily: LAYOUT.FONTS.LIGHT, color: LAYOUT.COLORS.BLACK},
-  // buttonContainer: {position: 'absolute', left: 20, right: 20, bottom: 20},
+
   image: {
     width: LAYOUT.WIDTH / 6.9,
     height: LAYOUT.HEIGHT / 13,

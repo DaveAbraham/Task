@@ -21,19 +21,15 @@ const Home = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
-  console.log(receivedProducts);
   const handleAddToCart = product => {
     if (cartItems?.length === 0) {
       var data = {productDetails: product, itemsInCart: 1};
-      // console.log("data of add to cart",data);
       dispatch(addToCart(data));
     } else {
       let foundIndex = -1;
-      console.log('indexBefore >> ', foundIndex);
       foundIndex = cartItems?.findIndex(
         x => x.productDetails?.id === product?.id,
       );
-      console.log('indexAfter>>', foundIndex);
       if (foundIndex != -1) {
         dispatch(increaseItemsCountNumber(foundIndex));
       } else {
